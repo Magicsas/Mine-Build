@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CookFood : MonoBehaviour
+public class AssembleFromComponents : MonoBehaviour
 {
     public Component ComponentOne;
     public Component ComponentTwo;
@@ -8,8 +8,8 @@ public class CookFood : MonoBehaviour
     public MineItemsController mineItemsController;
     public int FirstComponentCount;
     public int SecondComponentCount;
-    public int requiredFirstComponentForCooking = 1;
-    public int requiredSecondComponentCooking = 1;
+    public int RequiredFirstComponentForCooking = 1;
+    public int RequiredSecondComponentCooking = 1;
 
     private void Update()
     {
@@ -23,14 +23,16 @@ public class CookFood : MonoBehaviour
             FirstComponentCount = ComponentOne.ObjectInCount;
             SecondComponentCount = ComponentTwo.ObjectInCount;
 
-            int minCookedMeat = Mathf.Min(FirstComponentCount / requiredFirstComponentForCooking, SecondComponentCount / requiredSecondComponentCooking);
-            mineItemsController.maxItemsToSpawn = minCookedMeat;
+            //Расчет, сколько итогового продукта выйдет и соотношения входящих
+            int minCookedMeat = Mathf.Min(FirstComponentCount / RequiredFirstComponentForCooking, SecondComponentCount / RequiredSecondComponentCooking);
+            mineItemsController.MaxItemsToSpawn = minCookedMeat;
         }
 
+        //Если компонент один
         if(ComponentTwo == null)
         {
             FirstComponentCount = ComponentOne.ObjectInCount;
-            mineItemsController.maxItemsToSpawn = FirstComponentCount;
+            mineItemsController.MaxItemsToSpawn = FirstComponentCount;
         }
     }
 }

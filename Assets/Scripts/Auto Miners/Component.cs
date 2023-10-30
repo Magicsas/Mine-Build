@@ -6,6 +6,7 @@ public class Component : MonoBehaviour
     public int ObjectInCount;
     public int ObjectInMax;
 
+    //Скинуть нужные в руках компоненты для дальнейшей переработки
     private void OnTriggerStay(Collider other)
     {
         if (other.GetComponent<UseItem>() != null && other.GetComponent<UseItem>()._items.Count > 0 && ObjectInCount < ObjectInMax)

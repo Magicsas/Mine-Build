@@ -1,2 +1,4 @@
-# Mine-Build
+﻿# Mine-Build
  GameBox тестовое
+Шацких Максим Дарьевич
+

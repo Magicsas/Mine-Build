@@ -3,31 +3,32 @@ using UnityEngine.UI;
 
 public class UpgradeMiner : MonoBehaviour
 {
-    MineItems _miner;
-    public BuyConstruction buyConstruction;
+    public MineItems Miner;
+    public BuyConstruction BuyConstruction;
     public int Price;
 
     int _currentMoney;
 
     Text _minerName;
-    public Text _priceText;
+    public Text PriceText;
 
     private void Awake()
     {
         _minerName = GetComponentInChildren<Text>();
-        _miner = buyConstruction.ConstructionPrefab.GetComponentInChildren<MineItems>();
-        _minerName.text = buyConstruction.CunstructionIndex;
+        Miner = BuyConstruction.ConstructionPrefab.GetComponentInChildren<MineItems>();
+        _minerName.text = BuyConstruction.CunstructionIndex;
 
-        _priceText.text = Price.ToString();
+        PriceText.text = Price.ToString();
     }
 
     public void Upgrade()
     {
+        //PlayerPrefs в котором лежит общее количество денег
         _currentMoney = PlayerPrefs.GetInt("MoneyCount");
 
         if (_currentMoney >= Price && _currentMoney - Price >= 0)
         {
-            _miner.spawnInterval -= _miner.spawnInterval / 2;
+            Miner.spawnInterval -= Miner.spawnInterval / 2;
 
             PlayerPrefs.SetInt("MoneyCount", _currentMoney -= Price);
 
@@ -38,6 +39,6 @@ public class UpgradeMiner : MonoBehaviour
             Debug.Log("Не хватает на улучшение");
         }
 
-        _priceText.text = Price.ToString();
+        PriceText.text = Price.ToString();
     }
 }

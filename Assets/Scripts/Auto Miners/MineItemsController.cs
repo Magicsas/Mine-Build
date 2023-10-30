@@ -5,52 +5,52 @@ using UnityEngine;
 
 public class MineItemsController : MonoBehaviour
 {
-    CookFood cookFood;
+    AssembleFromComponents _assembleFromComponents;
 
-    public MineItems mineItems;
-    public int maxItemsToSpawn = 10;
+    public MineItems MineItems;
+    public int MaxItemsToSpawn = 10;
 
-    private int itemsSpawned = 0;
+    private int _itemsSpawned = 0;
 
     private void Start()
     {
-        cookFood = GetComponent<CookFood>();
-        mineItems.SetCanSpawn(true);
+        _assembleFromComponents = GetComponent<AssembleFromComponents>();
+        MineItems.SetCanSpawn(true);
     }
     private void Update()
     {
-        if (itemsSpawned >= maxItemsToSpawn)
+        if (_itemsSpawned >= MaxItemsToSpawn)
         {
-            mineItems.SetCanSpawn(false);
+            MineItems.SetCanSpawn(false);
         }
 
-        if (cookFood.ComponentTwo != null)
+        if (_assembleFromComponents.ComponentTwo != null)
         {
-            if (cookFood.ComponentOne.ObjectInCount != 0 && cookFood.ComponentTwo.ObjectInCount != 0)
+            if (_assembleFromComponents.ComponentOne.ObjectInCount != 0 && _assembleFromComponents.ComponentTwo.ObjectInCount != 0)
             {
-                mineItems.SetCanSpawn(true);
+                MineItems.SetCanSpawn(true);
             }
         }
         else
         {
-            if (cookFood.ComponentOne.ObjectInCount != 0)
+            if (_assembleFromComponents.ComponentOne.ObjectInCount != 0)
             {
-                mineItems.SetCanSpawn(true);
+                MineItems.SetCanSpawn(true);
             }
         }
     }
     public void ItemSpawned()
     {
-        itemsSpawned++;
+        _itemsSpawned++;
 
-        if (cookFood.ComponentTwo != null)
+        if (_assembleFromComponents.ComponentTwo != null)
         {
-            cookFood.ComponentOne.ObjectInCount--;
-            cookFood.ComponentTwo.ObjectInCount--;
+            _assembleFromComponents.ComponentOne.ObjectInCount--;
+            _assembleFromComponents.ComponentTwo.ObjectInCount--;
         }
-        else if (cookFood.ComponentTwo == null)
+        else if (_assembleFromComponents.ComponentTwo == null)
         {
-            cookFood.ComponentOne.ObjectInCount--;
+            _assembleFromComponents.ComponentOne.ObjectInCount--;
         }
     }
 }

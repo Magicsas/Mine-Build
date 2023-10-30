@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class BuyConstruction : MonoBehaviour
 {
-    public ItemScriptableObject _item;
+    public ItemScriptableObject Item;
     public GameObject ConstructionPrefab;
     public int price;
     public string CunstructionIndex;
@@ -16,8 +16,11 @@ public class BuyConstruction : MonoBehaviour
     {
         if (PlayerPrefs.GetInt(CunstructionIndex) == 1)
         {
+            //—оздать конструкцию
             GameObject newConstruction = Instantiate(ConstructionPrefab, transform.position, Quaternion.identity);
-            newConstruction.GetComponentInChildren<MineItems>().itemTemplate = _item;
+            newConstruction.GetComponentInChildren<MineItems>().itemTemplate = Item;
+
+            //¬ключить его улучшение в меню и уничтожить объект-создатель
             MinerUpgradePanel.SetActive(true);
             Destroy(gameObject);
         }
@@ -37,7 +40,7 @@ public class BuyConstruction : MonoBehaviour
                 if (_currentMoney >= price && _currentMoney - price >= 0)
                 {
                     GameObject newConstruction = Instantiate(ConstructionPrefab, transform.position, Quaternion.identity);
-                    newConstruction.GetComponentInChildren<MineItems>().itemTemplate = _item;
+                    newConstruction.GetComponentInChildren<MineItems>().itemTemplate = Item;
 
                     _currentMoney -= price;
                     Debug.Log(_currentMoney);

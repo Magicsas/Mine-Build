@@ -775,7 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95457632e55d97443a9f763833cfedeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mineItemsController: {fileID: 7082623864345932865}
+  MineItemsController: {fileID: 7082623864345932865}
   itemTemplate: {fileID: 11400000, guid: d422a5e7a77ebcf4eac04718cd0b6ff0, type: 2}
   spawnInterval: 10
 --- !u!114 &7082623864345932865
@@ -790,8 +790,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add56e3d97430fc4b9205d4aa8f4b93d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mineItems: {fileID: 8514441023728519916}
-  maxItemsToSpawn: 10
+  MineItems: {fileID: 8514441023728519916}
+  MaxItemsToSpawn: 10
 --- !u!114 &2659744024215956482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,7 +801,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4626452811809554719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7642f9bbbd43c0d409764cd88bc6ae63, type: 3}
+  m_Script: {fileID: 11500000, guid: fdd1c587a0b17f24081e4c78c29fa604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ComponentOne: {fileID: 2274680751300178692}
@@ -809,8 +809,8 @@ MonoBehaviour:
   mineItemsController: {fileID: 7082623864345932865}
   FirstComponentCount: 0
   SecondComponentCount: 0
-  requiredFirstComponentForCooking: 1
-  requiredSecondComponentCooking: 1
+  RequiredFirstComponentForCooking: 1
+  RequiredSecondComponentCooking: 1
 --- !u!1 &5926892927901880158
 GameObject:
   m_ObjectHideFlags: 0

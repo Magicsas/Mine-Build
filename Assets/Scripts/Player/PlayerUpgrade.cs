@@ -3,30 +3,32 @@ using UnityEngine.UI;
 
 public class PlayerUpgrade : MonoBehaviour
 {
-    UseItem useItem;
-    PlayerMovement playerMovement;
+    public UseItem UseItem;
+    public PlayerMovement PlayerMovement;
     int _price = 2500;
     public Text PriceText;
 
     private void Awake()
     {
-        playerMovement = FindAnyObjectByType<PlayerMovement>();
-        useItem = FindAnyObjectByType<UseItem>();
+        PlayerMovement = FindAnyObjectByType<PlayerMovement>();
+        UseItem = FindAnyObjectByType<UseItem>();
 
         PriceText.text = _price.ToString();
     }
 
     public void Upgrade()
     {
+        //PlayerPrefs в котором лежит общее количество денег
         int _currentMoney = PlayerPrefs.GetInt("MoneyCount");
 
         if (_currentMoney >= _price && _currentMoney - _price >= 0)
         {
-            useItem.MaxItem *= 2;
-            playerMovement.moveSpeed++;
+            UseItem.MaxItem *= 2;
+            PlayerMovement.moveSpeed++;
             PriceText.text = _price.ToString();
 
             PlayerPrefs.SetInt("MoneyCount", _currentMoney -= _price);
+
             _price *= 2;
         }
         else

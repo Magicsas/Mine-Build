@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MineItems : MonoBehaviour
 {
-    public MineItemsController mineItemsController;
+    public MineItemsController MineItemsController;
     
     private List<Transform> spawnPoints = new List<Transform>();
     public ItemScriptableObject itemTemplate;
@@ -39,9 +39,9 @@ public class MineItems : MonoBehaviour
 
                 lastSpawnTime = Time.time;
 
-                if(mineItemsController != null)
+                if(MineItemsController != null)
                 {
-                    mineItemsController.ItemSpawned();
+                    MineItemsController.ItemSpawned();
                 }
             }
         }
